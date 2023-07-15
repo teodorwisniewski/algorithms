@@ -13,7 +13,7 @@ function bubbleSort(array) {
     while (!isSorted){
         isSorted = true
         for (let i=0; i<lastIndex; i++){
-            if(array[i]>array[i+1]){
+            if(array[i] > array[i+1]){
                 swap(array, i, i+1)
                 isSorted = false
             }
