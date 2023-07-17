@@ -8,7 +8,7 @@ const bracketPairs = {
     '{': '}'
 }
 
-
+// TC O(n) SC O()
 function balancedBrackets(string) {
     let stack = [];
     for (let i=0; i<string.length; i++){
@@ -36,9 +36,9 @@ function balancedBrackets(string) {
 
 
 
-// let text = "([])(){}(())()()"
+let text = "([])(){}(())()()"
 
-// console.log(`The input text ${text} is balanced: ${balancedBrackets(text)}`);
+console.log(`The input text ${text} is balanced: ${balancedBrackets(text)}`);
 
 
 text2 = "()[]{}{"
