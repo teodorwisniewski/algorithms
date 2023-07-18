@@ -18,8 +18,8 @@ def findMinEl(array: List, starting_index: int) -> List[Union[int, float]]:
 
 # O(n^2) SC O(1) -> TC O(N^2/2)
 def selectionSort(array):
-    for i in range(len(array)-1):
-        minIdx = findMinEl(array, i+1)
+    for i in range(len(array)):
+        minIdx = findMinEl(array, i)
         swap(array, i, minIdx)
     return array
 
@@ -29,6 +29,6 @@ print(f"Input array goes as follows {input_arr}")
 print(f"Sorted array {selectionSort(input_arr)}")
 
 
-input_arr = [2, 1]
+input_arr = [2, 1, 5]
 print(f"\n\n Input array goes as follows {input_arr}")
 print(f"Sorted array {selectionSort(input_arr)}")
