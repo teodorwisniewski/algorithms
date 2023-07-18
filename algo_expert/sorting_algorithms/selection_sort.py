@@ -18,8 +18,8 @@ def findMinEl(array: List, starting_index: int) -> List[Union[int, float]]:
 
 # O(n^2) SC O(1) -> TC O(N^2/2)
 def selectionSort(array):
-    for i in range(len(array)):
-        minIdx = findMinEl(array, i)
+    for i in range(len(array)-1):
+        minIdx = findMinEl(array, i+1)
         swap(array, i, minIdx)
     return array
 
