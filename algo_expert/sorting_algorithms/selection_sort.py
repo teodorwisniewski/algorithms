@@ -15,7 +15,8 @@ def findMinEl(array: List, starting_index: int) -> List[Union[int, float]]:
             minIdx = j
     return minIdx
 
-# O(n^2) SC O(1)
+
+# O(n^2) SC O(1) -> TC O(N^2/2)
 def selectionSort(array):
     for i in range(len(array)):
         minIdx = findMinEl(array, i)
