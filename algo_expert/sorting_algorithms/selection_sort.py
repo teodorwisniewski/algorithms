@@ -8,14 +8,14 @@ def swap(array, i, j):
 
 def findMinEl(array: List, starting_index: int) -> List[Union[int, float]]:
     minValue = float("+inf")
-    minIdx = 0
+    minIdx = starting_index
     for j in range(starting_index, len(array)):
         if minValue > array[j]:
             minValue = array[j]
             minIdx = j
     return minIdx
 
-
+# O(n^2) SC O(1)
 def selectionSort(array):
     for i in range(len(array)):
         minIdx = findMinEl(array, i)
