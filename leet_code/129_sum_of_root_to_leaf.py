@@ -18,31 +18,51 @@ def print_tree(node, level=0):
 
 
 
+# class Solution:
+
+#     # TC O(n) SC O(n)
+#     def sumNumbers(self, root: Optional[TreeNode]) -> int:
+
+#         arr_of_numbers: str = []
+
+#         def get_numbers_for_each_branch(arr_of_numbers, root, branch_number: str):
+
+#             if root is None:
+#                 return None
+#             elif root.left is None and root.right is None:
+#                 arr_of_numbers.append(branch_number + str(root.val))
+#             elif root.left is not None or root.right is not None:
+#                 new_str_component = str(root.val)
+#                 get_numbers_for_each_branch(arr_of_numbers, root.left,
+#                                             branch_number+new_str_component)
+#                 get_numbers_for_each_branch(arr_of_numbers, root.right,
+#                                             branch_number+new_str_component)
+        
+#         get_numbers_for_each_branch(arr_of_numbers, root, "")
+#         final_sum = 0
+#         for number_repr in arr_of_numbers:
+#             final_sum += int(number_repr)
+#         return final_sum
+
+
 class Solution:
 
-    # TC O(n) SC O(n)
+    # TC O(n) SC O(1)
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
 
-        arr_of_numbers: str = []
-
-        def get_numbers_for_each_branch(arr_of_numbers, root, branch_number: str):
+        def sum_branch(root, branch_value):
 
             if root is None:
-                return None
-            elif root.left is None and root.right is None:
-                arr_of_numbers.append(branch_number + str(root.val))
-            elif root.left is not None or root.right is not None:
-                new_str_component = str(root.val)
-                get_numbers_for_each_branch(arr_of_numbers, root.left,
-                                            branch_number+new_str_component)
-                get_numbers_for_each_branch(arr_of_numbers, root.right,
-                                            branch_number+new_str_component)
+                return 0
+            branch_value = branch_value * 10 + root.val
+            if root.left is None and root.right is None:
+                return branch_value
+
+            return sum_branch(root.left, branch_value) + sum_branch(root.right, branch_value)
         
-        get_numbers_for_each_branch(arr_of_numbers, root, "")
-        final_sum = 0
-        for number_repr in arr_of_numbers:
-            final_sum += int(number_repr)
-        return final_sum
+        return sum_branch(root, 0)
+
+
 
 
 #   1
