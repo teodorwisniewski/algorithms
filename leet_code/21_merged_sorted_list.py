@@ -7,45 +7,61 @@ class ListNode:
         self.next = next
 
 
+# O(m+n)
+# class Solution:
+#     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+#         if list1 is None and list2 is not None:
+#             merged_head = list2
+#             list2 = list2.next
+#         elif list1 is not None and list2 is None:
+#             merged_head = list1
+#             list1 = list1.next        
+#         elif list1 is None and list2 is None:
+#             return None
+#         elif list1.val < list2.val:
+#             merged_head = list1
+#             list1 = list1.next
+#         else:
+#             merged_head = list2
+#             list2 = list2.next
+
+#         merged_node = merged_head
+#         while list1 is not None and list2 is not None:
+#             if list1.val < list2.val:
+#                 merged_node.next = list1
+#                 merged_node = merged_node.next
+#                 list1 = list1.next
+#             else:
+#                 merged_node.next = list2
+#                 merged_node = merged_node.next
+#                 list2 = list2.next
+#         if list1 is None:
+#             while list2 is not None:
+#                 merged_node.next = list2
+#                 merged_node = merged_node.next
+#                 list2 = list2.next
+#         if list2 is None:
+#             while list1 is not None:
+#                 merged_node.next = list1
+#                 merged_node = merged_node.next
+#                 list1 = list1.next
+#         return merged_head
+
+
+
+# TC  O(n) SC O(n)
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
 
-        if list1 is None and list2 is not None:
-            merged_head = list2
-            list2 = list2.next
-        elif list1 is not None and list2 is None:
-            merged_head = list1
-            list1 = list1.next        
-        elif list1 is None and list2 is None:
-            return None
+        if list1 is None: return list2
+        if list2 is None: return list1
         elif list1.val < list2.val:
-            merged_head = list1
-            list1 = list1.next
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
         else:
-            merged_head = list2
-            list2 = list2.next
-
-        merged_node = merged_head
-        while list1 is not None and list2 is not None:
-            if list1.val < list2.val:
-                merged_node.next = list1
-                merged_node = merged_node.next
-                list1 = list1.next
-            else:
-                merged_node.next = list2
-                merged_node = merged_node.next
-                list2 = list2.next
-        if list1 is None:
-            while list2 is not None:
-                merged_node.next = list2
-                merged_node = merged_node.next
-                list2 = list2.next
-        if list2 is None:
-            while list1 is not None:
-                merged_node.next = list1
-                merged_node = merged_node.next
-                list1 = list1.next
-        return merged_head
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
 
 
 def print_list(node):
@@ -78,10 +94,10 @@ print_list(list1)
 print("List 2: ", end="")
 print_list(list2)
 
-# s = Solution()
-# merged_list = s.mergeTwoLists(list1, list2)
-# print("merged_list: ", end="")
-# print_list(merged_list)
+s = Solution()
+merged_list = s.mergeTwoLists(list1, list2)
+print("merged_list: ", end="")
+print_list(merged_list)
 
 
 # Creating the first list [-9,3]
