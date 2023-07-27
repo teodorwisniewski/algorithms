@@ -1,74 +1,39 @@
 from typing import Optional
 
-
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
 
-# O(m+n)
+
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:   
 
-        if list1 is None and list2 is not None:
-            merged_head = list2
-            list2 = list2.next
-        elif list1 is not None and list2 is None:
-            merged_head = list1
-            list1 = list1.next        
-        elif list1 is None and list2 is None:
-            return None
-        elif list1.val < list2.val:
-            merged_head = list1
-            list1 = list1.next
-        else:
-            merged_head = list2
-            list2 = list2.next
-
-        merged_node = merged_head
-        while list1 is not None and list2 is not None:
-            if list1.val < list2.val:
-                merged_node.next = list1
-                merged_node = merged_node.next
-                list1 = list1.next
+        current_node = head
+        new_head = None
+        prev = None
+        while current_node:
+            if new_head is None and current_node.val != val:
+                new_head = current_node
+            if current_node.val == val and new_head is not None:
+                prev.next = current_node.next
+                current_node.next = None
+                current_node = prev.next
             else:
-                merged_node.next = list2
-                merged_node = merged_node.next
-                list2 = list2.next
-        if list1 is None:
-            merged_node.next = list2
-        else:
-            merged_node.next = list1
+                prev = current_node
+                current_node = prev.next
 
-        return merged_head
+        return new_head
 
-
-
-# TC  O(n) SC O(n)
-# class Solution:
-#     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-
-#         if list1 is None: return list2
-#         if list2 is None: return list1
-#         elif list1.val < list2.val:
-#             list1.next = self.mergeTwoLists(list1.next, list2)
-#             return list1
-#         else:
-#             list2.next = self.mergeTwoLists(list1, list2.next)
-#             return list2
 
 
 def print_list(node):
     while node is not None:
         print(node.val, end = " ")
         node = node.next
-    print()
 
 
-
-
-from typing import Optional
 
 
 class ListNode:
@@ -77,49 +42,34 @@ class ListNode:
         self.next = next
 
 
+# Creating the list [1, 2, 6, 4, 5, 5, 6]
+node7 = ListNode(6)
+node6 = ListNode(5, node7)
+node5 = ListNode(5, node6)
+node4 = ListNode(4, node5)
+node3 = ListNode(6, node4)
+node2 = ListNode(2, node3)
+head = ListNode(6, node2) # This is the head of the list
 
-# Creating the first list [1, 2, 4]
-list1_node1 = ListNode(4)
-list1_node2 = ListNode(2, list1_node1)
-list1 = ListNode(1, list1_node2) # This is the head of the first list
-
-# Creating the second list [1, 3, 4]
-list2_node1 = ListNode(4)
-list2_node2 = ListNode(3, list2_node1)
-list2 = ListNode(1, list2_node2) # This is the head of the second list
-
-
-# Now let's print our lists
-print("List 1: ", end="")
-print_list(list1)
-
-print("List 2: ", end="")
-print_list(list2)
+print("initial list: ", end="")
+print_list(head)
 
 s = Solution()
-merged_list = s.mergeTwoLists(list1, list2)
-print("merged_list: ", end="")
-print_list(merged_list)
+cleaned_list = s.removeElements(head, 6)
+print("removeElements: ", end="")
+print_list(cleaned_list)
 
 
-# Creating the first list [-9,3]
-list1_node1 = ListNode(3)
-list3 = ListNode(-9, list1_node1) # This is the head of the first list
 
-# Creating the second list [5,7]
-list2_node1 = ListNode(7)
-list4 = ListNode(5, list2_node1) # This is the head of the second list
+node44 = ListNode(7)
+node33 = ListNode(7, node44)
+node22 = ListNode(7, node33)
+head2 = ListNode(7, node22) # This is the head of the list
 
-
-# Now let's print our lists
-print("\n\nList 3: ", end="")
-print_list(list3)
-
-print("List 4: ", end="")
-print_list(list4)
-
-
+print("\n\ninitial list: ", end="")
+print_list(head2)
 s = Solution()
-merged_list = s.mergeTwoLists(list3, list4)
-print("merged_list: ", end="")
-print_list(merged_list)
+cleaned_list = s.removeElements(head2, 7)
+print("removeElements: ", end="")
+print_list(cleaned_list)
+
