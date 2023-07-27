@@ -17,6 +17,26 @@ function printList(node) {
 }
 
 
+// /**
+//  * @param {ListNode} list1
+//  * @param {ListNode} list2
+//  * @return {ListNode}
+//  */
+// var mergeTwoLists = function(list1, list2) {
+    
+//     if (list1 === null){
+//         return list2;
+//     } else if(list2===null){
+//         return list1;
+//     } else if (list1.val < list2.val){
+//         list1.next = mergeTwoLists(list1.next, list2);
+//         return list1;
+//     } else{
+//         list2.next =  mergeTwoLists(list1, list2.next);
+//         return list2
+//     }
+// };
+
 /**
  * @param {ListNode} list1
  * @param {ListNode} list2
@@ -24,18 +44,24 @@ function printList(node) {
  */
 var mergeTwoLists = function(list1, list2) {
     
-    if (list1 === null){
-        return list2;
-    } else if(list2===null){
-        return list1;
-    } else if (list1.val < list2.val){
-        list1.next = mergeTwoLists(list1.next, list2);
-        return list1;
-    } else{
-        list2.next =  mergeTwoLists(list1, list2.next);
-        return list2
+    let mergedHead = {val:null, next:null};
+    let curr = mergedHead;
+    while(list1 && list2){
+        if (list1.val < list2.val){
+            curr.next = list1;
+            list1 = list1.next;
+        } else{
+            curr.next = list2;
+            list2 = list2.next;
+        }
+        curr = curr.next
     }
+    curr.next = list1 || list2
+
+    return mergedHead.next
 };
+
+
 
 // Creating the first list [1, 2, 4]
 let list1_node1 = new ListNode(4);
