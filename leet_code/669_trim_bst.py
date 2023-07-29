@@ -51,6 +51,8 @@ def insert(root, val):
 # The BST is now created
 
 class Solution:
+
+    # TC O(n) SC O(n)
     def trimBST(self, root: Optional[TreeNode], low, high):
         
         if root is None:
