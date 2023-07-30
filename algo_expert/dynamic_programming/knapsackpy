@@ -1,0 +1,83 @@
+
+
+
+# def knapsack(weights, max_weight):
+#     combs = []
+#     knapack_helper(weights, max_weight, 0, [], combs)
+#     return combs
+
+
+# def knapack_helper(weights, max_weight, idx, comb, combs):
+
+#     if max_weight < 0:
+#         return 
+#     if idx == len(weights):
+#         combs.append(comb.copy())
+#         return
+#     item_weight = weights[idx]
+#     comb.append(item_weight)
+#     knapack_helper(weights, max_weight-item_weight, idx+1, comb, combs)
+#     comb.pop()
+#     knapack_helper(weights, max_weight, idx+1, comb, combs)   
+
+
+
+def get_comb_total_value(items, comb):
+    return sum(
+        [
+            items[idx][0]
+            for idx in comb
+        ]
+    )
+
+def knapsackProblem(items, capacity):
+    # Write your code here.
+    # return [
+    #   10, // total value
+    #   [1, 2], // item indices
+    # ]
+
+    possible_combs = []
+    weights = [w for val, w in items]
+    knapack_helper(weights, capacity, 0, [], possible_combs)
+
+    highest_value_comb = possible_combs[0]
+    highest_value = get_comb_total_value(items, possible_combs[0])
+    for comb in possible_combs:
+        curr_comb_val = get_comb_total_value(items, comb)
+        if curr_comb_val > highest_value:
+            highest_value = curr_comb_val
+            highest_value_comb = comb
+    return [
+        highest_value, 
+        highest_value_comb
+    ]
+
+
+def knapack_helper(weights, max_weight, idx, comb, combs):
+
+    if max_weight < 0:
+        return 
+    if idx == len(weights):
+        combs.append(comb.copy())
+        return
+    item_weight = weights[idx]
+    comb.append(idx)
+    knapack_helper(weights, max_weight-item_weight, idx+1, comb, combs)
+    comb.pop()
+    knapack_helper(weights, max_weight, idx+1, comb, combs)   
+
+    
+
+    
+
+
+
+
+items = [[1, 2], [4, 3], [5, 6], [6, 7]]
+capacity = 10
+
+res = knapsackProblem(items, capacity)
+
+# [10, [1, 3]]
+print(res)
