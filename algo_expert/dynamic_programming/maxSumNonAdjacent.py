@@ -8,8 +8,7 @@
 #     if len(array) < 3:
 #         return max(array)
     
-#     sum_array = [0 for _ in array]
-#     sum_array[0] = array[0]
+#     sum_array = array[:]
 #     sum_array[1] = max(array[0], array[1])
     
 #     for i in range(2, len(array)):
