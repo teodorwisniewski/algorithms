@@ -20,30 +20,39 @@
 
 
 
-# TC O(n) SC O(1)
+# # TC O(n) SC O(1)
+# def maxSubsetSumNoAdjacent(array):
+#     if len(array) == 0:
+#         return 0
+#     if len(array) < 3:
+#         return max(array)
+    
+#     sum_array = []
+#     sum_array.append(array[0])
+#     sum_array.append(max(array[0], array[1]))
+    
+#     for i in range(2, len(array)):
+#         first_el = sum_array[1]
+#         second_el = sum_array[0] + array[i]
+#         current_max = max(first_el, second_el)
+#         sum_array[0], sum_array[1] = sum_array[1], current_max
+
+#     return current_max
+    
+
+
+
 def maxSubsetSumNoAdjacent(array):
-    if len(array) == 0:
+    return max(recusiveSum(array, 0), recusiveSum(array, 1))
+
+
+def recusiveSum(array, idx):
+    if idx >= len(array):
         return 0
-    if len(array) < 3:
-        return max(array)
+    first = recusiveSum(array, idx+2)
+    second = recusiveSum(array, idx+3)
+    return array[idx] + max(first, second)
     
-    sum_array = []
-    sum_array.append(array[0])
-    sum_array.append(max(array[0], array[1]))
-    
-    for i in range(2, len(array)):
-        first_el = sum_array[1]
-        second_el = sum_array[0] + array[i]
-        current_max = max(first_el, second_el)
-        sum_array[0], sum_array[1] = sum_array[1], current_max
-
-    return current_max
-    
-
-
-
-
-
 
 array = [75, 105, 120, 75, 90, 135]
 res = maxSubsetSumNoAdjacent(array)
