@@ -1,19 +1,35 @@
 
 
 
-// TC O(n) SC O(n)
+// // TC O(n) SC O(n)
+// function maxSubsetSumNoAdjacent(array) {
+//     if (array.length === 0) return 0;
+//     if (array.length <= 2) return Math.max(...array);
+//     let maxSum = new Array(array.length).fill(0);
+//     maxSum[0] = array[0];
+//     maxSum[1] = Math.max(array[0], array[1]);
+//     for (let i=2; i<array.length; i++){
+//         first = maxSum[i-1];
+//         second = maxSum[i-2] + array[i];
+//         maxSum[i] = Math.max(first, second);
+//     }
+//     return maxSum[maxSum.length - 1]
+//   }
+
+
+// TC O(n) SC O(1)
 function maxSubsetSumNoAdjacent(array) {
     if (array.length === 0) return 0;
     if (array.length <= 2) return Math.max(...array);
-    let maxSum = new Array(array.length).fill(0);
-    maxSum[0] = array[0];
-    maxSum[1] = Math.max(array[0], array[1]);
+    first = array[0];
+    second = Math.max(array[0], array[1]);
     for (let i=2; i<array.length; i++){
-        first = maxSum[i-1];
-        second = maxSum[i-2] + array[i];
-        maxSum[i] = Math.max(first, second);
+        currMax = Math.max(second, first + array[i]);
+        first = second;
+        second = currMax;
+        
     }
-    return maxSum[maxSum.length - 1]
+    return currMax;
   }
 
 
