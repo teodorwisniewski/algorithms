@@ -18,19 +18,31 @@
 
 
 // TC O(n) SC O(1)
+// function maxSubsetSumNoAdjacent(array) {
+//     if (array.length === 0) return 0;
+//     if (array.length <= 2) return Math.max(...array);
+//     first = array[0];
+//     second = Math.max(array[0], array[1]);
+//     for (let i=2; i<array.length; i++){
+//         currMax = Math.max(second, first + array[i]);
+//         first = second;
+//         second = currMax;
+        
+//     }
+//     return currMax;
+//   }
+
+
 function maxSubsetSumNoAdjacent(array) {
     if (array.length === 0) return 0;
     if (array.length <= 2) return Math.max(...array);
-    first = array[0];
-    second = Math.max(array[0], array[1]);
-    for (let i=2; i<array.length; i++){
-        currMax = Math.max(second, first + array[i]);
-        first = second;
-        second = currMax;
-        
-    }
-    return currMax;
-  }
+    return Math.max(recSum(array, 0), recSum(array, 1));
+}
+
+function recSum(arr, idx){
+    if (idx >= arr.length) return 0;
+    return arr[idx] + Math.max(recSum(arr, idx+2), recSum(arr, idx+3))
+}
 
 
 let arr = [75, 105, 120, 75, 90, 135];
