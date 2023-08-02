@@ -13,7 +13,7 @@ def numberOfWaysToMakeChange(n, denoms):
     return ways[-1]
 
 
-denoms = [1, 5, 10, 25]
+denoms = [1, 5, 10]
 target = 10
 res = numberOfWaysToMakeChange(target, denoms)
 print(f"donoms {denoms} target={target}")
