@@ -45,8 +45,8 @@ res = s.findTheWinner(n, k)
 print(f"findTheWinner: {res}")
 assert res == 3
 
-# n = 6
-# k = 5
-# res = s.findTheWinner(n, k)
-# print(f"findTheWinner: {res}")
-# assert res == 1
+n = 6
+k = 5
+res = s.findTheWinner(n, k)
+print(f"findTheWinner: {res}")
+assert res == 1
