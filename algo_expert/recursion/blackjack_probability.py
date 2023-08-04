@@ -8,10 +8,7 @@ def blackjackProbability(target, startingHand):
     return rec_helper(target, startingHand, memo)
 
 
-def rec_helper(target, current_hand, memo):
-
-    if startingHand > target:
-        return 0.1
+def rec_helper(target, startingHand, memo):
     if  (target - 4) <= startingHand <= target:
         return 0
     if startingHand in memo:
@@ -19,7 +16,7 @@ def rec_helper(target, current_hand, memo):
     
     prob = 0.0 
     for card_nb in range(1, 11):
-        new_startingHand = current_hand + card_nb
+        new_startingHand = startingHand + card_nb
         if new_startingHand < target - 4:
             prob += 0.1 * rec_helper(target, new_startingHand, memo)
         elif new_startingHand > target:
