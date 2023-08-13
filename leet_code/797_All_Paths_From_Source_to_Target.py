@@ -4,7 +4,7 @@ class Solution:
         LAST_NODE = len(graph) - 1
         def backtrack(paths, path, idx=0):
 
-            if FIRST_NODE in path and LAST_NODE in path:
+            if LAST_NODE == idx:
                 paths.append(path.copy())
                 return
 
