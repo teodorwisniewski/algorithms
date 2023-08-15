@@ -3,28 +3,48 @@ from typing import List
 
 
 
+# class Solution:
+#     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        
+#         def backtrack(combs, comb):
+#             comb_sum = sum(comb)
+#             if comb in combs:
+#                 return
+#             elif comb_sum == target:
+#                 combs.append(comb.copy())
+#                 return
+#             elif comb_sum > target:
+#                 return
+        
+#             for num in candidates:
+#                 if len(comb) == 0:
+#                     print(num)
+#                 comb.append(num) 
+#                 comb.sort()
+#                 backtrack(combs, comb)
+#                 comb.remove(num)
+#         results = []
+#         backtrack(results, [])
+#         return results
+
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
-        def backtrack(combs, comb):
-            comb_sum = sum(comb)
-            if comb in combs:
+        def backtrack(idx, comb, comb_sum):
+            if comb_sum == target:
+                results.append(comb.copy())
                 return
-            elif comb_sum == target:
-                combs.append(comb.copy())
+            elif comb_sum > target or idx >= len(candidates):
                 return
-            elif comb_sum > target:
-                return
-        
-            for num in candidates:
-                if len(comb) == 0:
-                    print(num)
-                comb.append(num) 
-                comb.sort()
-                backtrack(combs, comb)
-                comb.remove(num)
+            
+            new_num = candidates[idx]
+            comb.append(new_num)
+            backtrack(idx, comb, comb_sum + new_num)
+            comb.pop()
+            backtrack(idx+1, comb, comb_sum)
+
         results = []
-        backtrack(results, [])
+        backtrack(0, [], 0)
         return results
     
 
