@@ -12,15 +12,19 @@ class Solution:
             if len(perm) == len(nums):
                 res.append(perm.copy())
                 return
-
+            prev = None
             for i in range(len(numbers)):
                 num = numbers[i]
+                if prev == num:
+                    continue
                 nums_without = numbers[:i] + numbers[i+1:]
                 perm.append(num)
                 backtrack(perm, i+1, nums_without)
                 perm.pop()
+                prev = num
     
         res = []
+        nums.sort()
         backtrack([], 0, nums)
         return res
 
