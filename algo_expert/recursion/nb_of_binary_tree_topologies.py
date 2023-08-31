@@ -24,3 +24,7 @@ print(f"numberOfBinaryTreeTopologies {res}")
 n = 4
 res = numberOfBinaryTreeTopologies(n)
 print(f"numberOfBinaryTreeTopologies {res}")
+
+n = 5
+res = numberOfBinaryTreeTopologies(n)
+print(f"numberOfBinaryTreeTopologies {res}")
