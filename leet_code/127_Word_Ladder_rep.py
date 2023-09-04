@@ -44,3 +44,12 @@ res = sol.ladderLength(beginWord, endWord, wordList)
 print(f"ladderLength {res}")
 
 assert 5 == res
+
+
+
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
+sol = Solution()
+res = sol.ladderLength(beginWord, endWord, wordList)
+print(f"ladderLength {res}")
