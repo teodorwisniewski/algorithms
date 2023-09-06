@@ -1,6 +1,7 @@
 from typing import Optional, List
 
 
+#  TC O(n*2^n)
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
 
