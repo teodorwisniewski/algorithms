@@ -2,11 +2,11 @@
 
 
 
-# class Solution:
-#     def isPalindrome(self, s: str) -> bool:
-#         s = s.lower()
-#         s = "".join([char for char in s if char.isalnum()])
-#         return s == s[::-1]
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        s = "".join([char for char in s if char.isalnum()])
+        return s == s[::-1]
 
 
 # class Solution:
@@ -39,12 +39,35 @@
 
 
 
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+    
+        left, right = 0, len(s) - 1
+        
+        while left < right:
+            while left < right and not s[left].lower().isalnum():
+                left += 1
+            while left < right and not s[right].lower().isalnum():
+                right -= 1
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+        return True
+
+
 input = "A man, a plan, a canal: Panama"
 sol = Solution()
 res = sol.isPalindrome(input)
 
 print(f"isPalindrome {res}")
 
-res = sol.isPalindrome("0P")
+# res = sol.isPalindrome("0P")
 
+# print(f"isPalindrome {res}")
+
+
+res = sol.isPalindrome("race a car")
 print(f"isPalindrome {res}")
