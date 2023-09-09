@@ -21,7 +21,7 @@
     
 #     return False
 
-#  TC O(2^(M*N)) SC O(M*N)
+#  TC O(2^(M*N)) without caching.... with caching O(mxn) SC O(M*N)
 def interweavingStrings(one, two, three):
     if len(three) != len(one) + len(two):
         return False
