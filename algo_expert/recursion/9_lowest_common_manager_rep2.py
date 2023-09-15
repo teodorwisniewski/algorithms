@@ -68,42 +68,33 @@ def createCompanyStructure():
 #         `-- Employee12
 
 
-
 @dataclass
 class OrgInfo:
-    lowest_common_manager: str
-    nb_of_direct_reports: int
+    lowest_common_menago: str
+    num_of_reports: int
 
 
+def getLowestCommonManager(topManager, reportOne, reportTwo):
+    # Write your code here.
+    return getOrgInfo(topManager, reportOne, reportTwo).lowest_common_menago
 
-def getLowestCommonManager(topManager, reportOne, reportTwo):  
-    return getOrgInfo(topManager, reportOne, reportTwo).lowest_common_manager  
 
+def getOrgInfo(manager: OrgChart, reportOne: OrgChart, reportTwo: OrgChart) -> OrgInfo:
 
-def getOrgInfo(manager, reportOne, reportTwo) -> OrgChart:
-
-    nb_of_direct_reports = 0
+    num_of_reports = 0
     for direct_report in manager.directReports:
         org_info = getOrgInfo(direct_report, reportOne, reportTwo)
-        if org_info.lowest_common_manager is not None:
+        if org_info.lowest_common_menago is not None:
             return org_info
-        nb_of_direct_reports += org_info.nb_of_direct_reports
+        num_of_reports += org_info.num_of_reports
+    
+    if manager in {reportOne, reportTwo}:
+        num_of_reports += 1
 
-    if manager == reportOne or manager == reportTwo:
-        nb_of_direct_reports += 1
-
-    if nb_of_direct_reports == 2:
-        lowest_common_manager = manager
+    if num_of_reports == 2:
+        return OrgInfo(manager, num_of_reports)
     else:
-        lowest_common_manager = None
-
-    return OrgInfo(lowest_common_manager, nb_of_direct_reports)
-
-
-
-
-
-
+        return OrgInfo(None, num_of_reports)
 
 
 top_manager, report_1, report_2 = createCompanyStructure()
