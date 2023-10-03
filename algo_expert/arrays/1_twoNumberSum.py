@@ -24,6 +24,20 @@ def twoNumberSum(array, targetSum):
 
 
 
+# TC and SC O(n)
+def twoNumberSum(array, targetSum):
+
+    mapping = {}
+    for num in array:
+        diff = targetSum - num
+        if diff in mapping:
+            return [diff, num]
+        mapping[num] = True
+
+    return []
+        
+
+
 
 array = [3, 5, -4, 8, 11, 1, -1, 6]
 targetSum = 10
