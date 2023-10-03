@@ -1,24 +1,16 @@
 
 
 
-
+# TC and SC O(n)
 def twoNumberSum(array, targetSum):
 
+    mapping = {}
+    for num in array:
+        diff = targetSum - num
+        if diff in mapping:
+            return [diff, num]
+        mapping[num] = True
 
-
-    array.sort()
-    left, right = 0, len(array) - 1
-
-
-    while left <= right:
-        left_val, right_val = array[left], array[right]
-        cs = left_val + right_val
-        if cs == targetSum:
-            return [left_val, right_val]
-        elif cs < targetSum:
-            left += 1
-        else:
-            right -= 1
     return []
         
 
