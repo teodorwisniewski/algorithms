@@ -1,14 +1,15 @@
 
 def zeroSumSubarray(nums):
 
-    sums = set()
+    sums = {0}
     cs = 0
     for num in nums:
         cs += num
-        if cs in sums or cs == 0:
+        if cs in sums:
             return True
         sums.add(cs)
     return False
+
 
 
 
