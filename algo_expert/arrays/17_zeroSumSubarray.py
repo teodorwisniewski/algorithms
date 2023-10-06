@@ -1,6 +1,7 @@
 
-def zeroSumSubarray(nums):
 
+#  TC O(n) SC O(n)
+def zeroSumSubarray(nums):
     sums = {0}
     cs = 0
     for num in nums:
