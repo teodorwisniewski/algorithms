@@ -9,15 +9,27 @@ class Solution:
             for idx, num in enumerate(nums1)
         }
         res = [-1] * len(nums1)
+        stack = []
 
-        for i, num2 in enumerate(nums2):
-            if num2 not in nums_idx_map:
-                continue
-            for j in range(i+1, len(nums2)):
-                if nums2[j] > num2:
-                    idx = nums_idx_map[num2]
-                    res[idx] = nums2[j]
-                    break
+
+        for curr in nums2:
+            while stack and curr > stack[-1]:
+                val = stack.pop()
+                idx = nums_idx_map[val]
+                res[idx] = curr
+            if curr in nums_idx_map:
+                stack.append(curr)
+        return res
+
+
+        # for i, num2 in enumerate(nums2):
+        #     if num2 not in nums_idx_map:
+        #         continue
+        #     for j in range(i+1, len(nums2)):
+        #         if nums2[j] > num2:
+        #             idx = nums_idx_map[num2]
+        #             res[idx] = nums2[j]
+        #             break
         return res
 
 
