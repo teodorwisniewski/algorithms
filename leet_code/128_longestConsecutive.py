@@ -4,13 +4,13 @@ from typing import List
 # class Solution:
 #     def longestConsecutive(self, nums: List[int]) -> int:
 
-#         nums_set = set(nums)
+#         nums = set(nums)
 #         longest = 0
 
 #         for num in nums:
-#             if (num - 1) not in nums_set:
+#             if (num - 1) not in nums:
 #                 length = 1
-#                 while (num + length) in nums_set:
+#                 while (num + length) in nums:
 #                     length += 1
 #                 longest = max(longest, length)
 #         return longest
@@ -19,40 +19,40 @@ from typing import List
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
 
-        nums_set = set(nums)
+        nums = set(nums)
         longest = 0
 
-        while nums_set:
+        while nums:
 
-            num = nums_set.pop()
+            num = nums.pop()
             curr_len = 1
 
             l = num - 1
             r = num + 1
 
-            if l in nums_set and r in nums_set:
+            if l in nums and r in nums:
 
-                while r in nums_set:
-                    nums_set.remove(r)
+                while r in nums:
+                    nums.remove(r)
                     r += 1
                     curr_len += 1
                 
-                while l in nums_set:
-                    nums_set.remove(l)
+                while l in nums:
+                    nums.remove(l)
                     l -= 1
                     curr_len += 1 
 
-            if l in nums_set:
+            if l in nums:
                 
-                while l in nums_set:
-                    nums_set.remove(l)
+                while l in nums:
+                    nums.remove(l)
                     l -= 1
                     curr_len += 1                
  
-            if r in nums_set:
+            if r in nums:
 
-                while r in nums_set:
-                    nums_set.remove(r)
+                while r in nums:
+                    nums.remove(r)
                     r += 1
                     curr_len += 1
             
