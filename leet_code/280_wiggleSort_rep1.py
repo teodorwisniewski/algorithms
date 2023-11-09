@@ -14,6 +14,6 @@ class Solution:
         return nums 
     
 sol = Solution()
-nums = [3,5,2,1,6,4]
+nums = [3, 5, 2, 1, 6, 4]
 res = sol.wiggleSort(nums)
 print(f"res {res}")
