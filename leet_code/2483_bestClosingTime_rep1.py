@@ -4,21 +4,27 @@
 
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
-        n = len(nums)
+        n = len(customers)
         prefix = [0] * (n+1)
         postfix = [0] * (n+1)
 
         for idx in range(1, n+1):
+            prefix[idx] = prefix[idx-1]
             if customers[idx-1] == "N":
                 prefix[idx] += 1
 
-        for idx in range(n+1, -1, 1):
+        for idx in range(n-1, -1, -1):
+            postfix[idx] = postfix[idx+1]
             if customers[idx] == "Y":
                 postfix[idx] += 1    
 
-        penalty_idx, penalty = 0, float("inf")       
+        penalty_idx, min_penalty = 0, float("inf")       
 
-        for      
+        for idx in range(n+1):
+            penalty = prefix[idx] + postfix[idx]      
+            if penalty < min_penalty:
+                min_penalty = penalty
+                penalty_idx = idx
 
         return penalty_idx
 
