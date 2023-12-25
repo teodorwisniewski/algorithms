@@ -1,5 +1,5 @@
 import pytest
-from leetcode.155_MinStack import MinStack
+from leetcode.problem_155_MinStack import MinStack
 
 
 def test_push():
