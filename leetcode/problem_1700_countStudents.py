@@ -33,4 +33,4 @@ class Solution:
             else:
                 break
         
-        return sum(students_cnt.values())
+        return students_cnt.total()
