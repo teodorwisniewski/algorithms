@@ -1,5 +1,5 @@
 
-from leetcode.problem_922_sortArray import Solution 
+from leetcode.problem_922_sortArray_rep1 import Solution 
 
 
 def test_sort_empty():
