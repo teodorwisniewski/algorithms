@@ -33,13 +33,29 @@ def quick_sort(arr, left=0, right=None):
 
     return arr
 
+def quick_sort_concise(arr):
+
+    # base case
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[len(arr)//2]
+    left_partition = [item for item in arr if item < pivot]
+    middle_partition = [item for item in arr if item == pivot]
+    right_partition = [item for item in arr if item > pivot]
+
+    return (
+        quick_sort_concise(left_partition) + 
+        middle_partition +
+        quick_sort_concise(right_partition)
+    )
 
 if __name__ == "__main__":
 
     my_list = [4, 6, 1, 7, 3, 2, 5]
     # print(pivot(my_list))
     print(my_list)
-    print(quick_sort(my_list))
+    print(quick_sort_concise(my_list))
 
     # my_list = [2, 3, 4]
     # print(pivot(my_list))
