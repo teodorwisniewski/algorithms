@@ -31,22 +31,22 @@
 #     )
 
 
-def quick_sort(arr):
+# def quick_sort(arr):
 
-    if len(arr) <= 1:
-        return arr
+#     if len(arr) <= 1:
+#         return arr
     
-    pivot = arr[0]
-    left_part, right_part = partition(arr, pivot)
+#     pivot = arr[0]
+#     left_part, right_part = partition(arr, pivot)
 
-    left_sorted = quick_sort(left_part)
-    right_sorted = quick_sort(right_part)
+#     left_sorted = quick_sort(left_part)
+#     right_sorted = quick_sort(right_part)
 
-    return (
-        left_sorted +
-        [pivot] +
-        right_sorted
-    )
+#     return (
+#         left_sorted +
+#         [pivot] +
+#         right_sorted
+#     )
 
 
 def partition(arr, pivot):
@@ -60,6 +60,23 @@ def partition(arr, pivot):
         elif pivot > el:
             right_part.append(el)
     return left_part, right_part
+
+
+# inplace insort implementation
+def quick_sort(arr):
+    return quick_sort_helper(arr, 0, len(arr)-1)
+
+# 
+def quick_sort_helper(arr, left_idx, right_idx):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot_idx = get_pivot_idx(arr)
+
+    left = quick_sort(arr, left, pivot_idx-1)
+    right = quick_sort(arr, pivot_idx+1, right)
+
+    return arr
 
 
 
