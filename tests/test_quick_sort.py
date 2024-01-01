@@ -1,6 +1,7 @@
 
 from leetcode.sorting_quick_sort import quick_sort, quick_sort_concise
 
+
 sorting_fun = quick_sort
 
 def test_sort_empty():
