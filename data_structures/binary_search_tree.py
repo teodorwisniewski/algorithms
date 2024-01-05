@@ -32,7 +32,7 @@ class BinarySearchTree:
                 if temp.right is None:
                     temp.right = new_node
                     return True
-                temp = temp.right                
+                temp = temp.right         
 
     def contains(self, value) -> bool:
         temp = self.root
@@ -45,3 +45,4 @@ class BinarySearchTree:
             else:
                 temp = temp.right   
         return False
+    
