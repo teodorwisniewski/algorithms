@@ -1,5 +1,5 @@
 
-from algo_expert.searching.algoexp_5_search_range import searchForRange  
+from algo_expert.searching.algoexp_5_search_range_rep1 import searchForRange  
 
 def test_multiple_occurrences():
     assert searchForRange([1, 3, 3, 5, 5, 5, 8, 9], 5) == [3, 5]
