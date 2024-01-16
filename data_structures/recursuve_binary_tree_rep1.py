@@ -48,8 +48,35 @@ class BinarySearchTree:
     def delete_node(self, value):
         self.root = self.__delete_node(self.root, value)
     
-    def __delete_node(self, current_node, value) -> Node:
-        pass 
-
-    def min_value(self, current_node):
-        pass
+    def __delete_node(self, current_node: Node, value) -> Node:
+        if current_node is None:
+            return None
+        
+        if current_node.value > value:
+            current_node.left = self.__delete_node(current_node.left, value)
+        elif current_node.value < value:
+            current_node.right = self.__delete_node(current_node.right, value)
+        else:
+            # removing a leaf node
+            if current_node.left is None and current_node.right is None:
+                return None
+            # removing an internal node with a left node
+            elif current_node.left is not None:
+                return current_node.left
+            # removing an internal node with a right node
+            elif current_node.right is not None:
+                return current_node.right
+            # removing an internal node with a right and a left node
+            else:
+                min_value_right_leaf: int = self.min_value(current_node.right)
+                # nadpisanie wartosci usuwanego wezla
+                current_node.value = min_value_right_leaf
+                self.__delete_node(current_node.right, min_value_right_leaf)
+        return current_node
+       
+    def min_value(self, current_node) -> int:
+        if current_node is None:
+            return None
+        while current_node.left is not None:
+            current_node = current_node.left
+        return current_node.value

@@ -53,9 +53,9 @@ def test_min_value():
         bst.insert(value)
     
     # Test with multiple nodes
-    assert bst.min_value(bst.root).value == 8
+    assert bst.min_value(bst.root) == 8
 
     # Test with a single node tree
     bst = BinarySearchTree()
     bst.insert(10)
-    assert bst.min_value(bst.root).value == 10
+    assert bst.min_value(bst.root) == 10
