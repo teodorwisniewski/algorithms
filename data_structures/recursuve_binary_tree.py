@@ -42,7 +42,7 @@ class BinarySearchTree:
             return self.__recursive_contains(node.right, val)
                
     def delete_node(self, value):
-        return self.__delete_node(self.root, value)
+        self.root = self.__delete_node(self.root, value)
     
     def __delete_node(self, current_node, value) -> Node:
 
