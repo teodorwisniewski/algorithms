@@ -1,5 +1,5 @@
 
-from data_structures.recursuve_binary_tree import BinarySearchTree
+from data_structures.recursuve_binary_tree_rep1 import BinarySearchTree
 
 def test_insert_and_contains():
     bst = BinarySearchTree()
@@ -32,6 +32,7 @@ def test_delete_node():
     # Delete a node with one child
     bst.delete_node(20)
     assert bst.contains(20) == False
+    assert bst.contains(15)
 
     # Delete a node with two children
     bst.delete_node(15)
