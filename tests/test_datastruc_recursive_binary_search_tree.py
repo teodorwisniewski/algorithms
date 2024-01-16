@@ -1,6 +1,7 @@
 
 from data_structures.recursuve_binary_tree_rep1 import BinarySearchTree
 
+
 def test_insert_and_contains():
     bst = BinarySearchTree()
     values = [15, 10, 20, 8, 12, 16, 25]
@@ -12,6 +13,7 @@ def test_insert_and_contains():
         assert bst.contains(val) is True
 
     assert bst.contains(100) is False
+
 
 def test_empty_tree():
     bst = BinarySearchTree()
@@ -39,9 +41,7 @@ def test_delete_node():
     bst.delete_node(15)
     assert bst.contains(15) == False
 
-    # Additional checks for tree structure can be added here
 
-# Test min_value method
 def test_min_value():
     bst = BinarySearchTree()
 
