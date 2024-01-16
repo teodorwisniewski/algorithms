@@ -29,17 +29,17 @@ def test_delete_node():
 
     # Delete a leaf node
     bst.delete_node(8)
-    assert bst.contains(8) == False
+    assert bst.contains(8) is False
 
     # Delete a node with one child
     bst.delete_node(20)
-    assert bst.contains(20) == False
+    assert bst.contains(20) is False
     
     assert bst.contains(15)
 
     # Delete a node with two children
     bst.delete_node(15)
-    assert bst.contains(15) == False
+    assert bst.contains(15) is False
 
 
 def test_min_value():
