@@ -1,5 +1,5 @@
 
-from data_structures.recursuve_binary_tree_rep1 import BinarySearchTree
+from data_structures.recursuve_binary_tree_rep2 import BinarySearchTree
 
 
 def test_insert_and_contains():
