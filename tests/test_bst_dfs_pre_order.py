@@ -1,5 +1,5 @@
 
-from data_structures.dfs_pre_order_bfs import BinarySearchTree
+from data_structures.dfs_pre_order_bfs_rep1 import BinarySearchTree
 
 
 def test_insert_and_contains():
