@@ -37,6 +37,15 @@ class Graph:
             self.adj_list[v2].remove(v1)
             return True
         return False
+    
+    def remove_vertex(self, v1: str) -> bool:
+        if v1 not in self.adj_list:
+            return False
+        
+        for adj_v in self.adj_list[v1]:
+            self.adj_list[adj_v].remove(v1)
+        del self.adj_list[v1]
+        return True
 
 
     
@@ -56,4 +65,7 @@ if __name__ == "__main__":
     g.print_graph()
 
     g.remove_edge("A", "C")
+    g.print_graph()
+
+    g.remove_vertex('A')
     g.print_graph()
