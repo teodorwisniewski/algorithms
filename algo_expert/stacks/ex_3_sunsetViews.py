@@ -28,24 +28,45 @@
 
 
 
+# def sunsetViews(buildings, direction):
+
+#     outputs = []
+#     running_max = 0
+#     if direction == "EAST":
+#         for i, val in reversed(list(enumerate(buildings))):
+#             if val > running_max:
+#                 outputs.append(i)
+#                 running_max = val
+#     else:
+#         for i, val in enumerate(buildings):
+#             if val > running_max:
+#                 outputs.append(i)
+#                 running_max = val
+    
+
+            
+#     if direction == "EAST":
+#         return outputs[::-1]
+#     else:
+#         return outputs
+
+
 def sunsetViews(buildings, direction):
 
-    outputs = []
-    running_max = 0
+    stack = []
+
     if direction == "EAST":
         for i, val in reversed(list(enumerate(buildings))):
-            if val > running_max:
-                outputs.append(i)
-                running_max = val
+            if not stack or val > buildings[stack[-1]]:
+                stack.append(i)
     else:
         for i, val in enumerate(buildings):
-            if val > running_max:
-                outputs.append(i)
-                running_max = val
+            if not stack or val > buildings[stack[-1]]:
+                stack.append(i)
     
 
             
     if direction == "EAST":
-        return outputs[::-1]
+        return stack[::-1]
     else:
-        return outputs
+        return stack
