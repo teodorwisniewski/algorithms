@@ -16,7 +16,7 @@ from typing import List
 #     return results
 
 
-# From right to left monotonically increasing 
+# From right to left monotonically decreasing 
 def get_next_greater_element(heights: List) -> List:
 
     stack = []
