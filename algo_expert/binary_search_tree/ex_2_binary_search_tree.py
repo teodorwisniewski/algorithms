@@ -74,8 +74,11 @@ class BinarySearchTree:
             return self._r_contains(curr_node.right, value)
 
 
-
-
+    def min_value(self, curr_node) -> int:
+        
+        while curr_node.left:
+            curr_node = curr_node.left
+        return curr_node.value
 
 
 
@@ -112,3 +115,11 @@ assert output is not True
 print(output)
 
 
+output = my_tree.min_value(my_tree.root)
+assert output == 18
+print(f"my_tree.min_value(my_tree.root)={output}")
+
+
+output = my_tree.min_value(my_tree.root.right)
+assert output == 52
+print(f"my_tree.min_value(my_tree.root.right)={output}")
