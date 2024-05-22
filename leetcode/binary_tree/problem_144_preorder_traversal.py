@@ -25,19 +25,33 @@
 
 # iterative implementation
 
+# class Solution:
+#     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+#         if root is None:
+#             return []
+#         results = []
+        
+#         stack = [root]
+#         while stack:
+#             curr_node = stack.pop()
+#             results.append(curr_node.val)
+
+#             if curr_node.right:
+#                 stack.append(curr_node.right)
+#             if curr_node.left:
+#                 stack.append(curr_node.left)
+#         return results
+    
+
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root is None:
-            return []
+        curr, stack = root, []
         results = []
-        
-        stack = [root]
-        while stack:
-            curr_node = stack.pop()
-            results.append(curr_node.val)
-
-            if curr_node.right:
-                stack.append(curr_node.right)
-            if curr_node.left:
-                stack.append(curr_node.left)
+        while curr or stack:
+            if curr:
+                results.append(curr.val)
+                stack.append(curr.right)
+                curr = curr.left
+            else:
+                curr = stack.pop()
         return results
