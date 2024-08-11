@@ -18,6 +18,10 @@ def can_be_read(newspapers_read_times: List[int], num_coworkers: int, upper_read
 
     return need_coworkers_cnt <= num_coworkers
 
+
+# Time complexity: O(n log m)
+# m = sum(newspapers_read_times)
+# n = len(newspapers_read_times)
 def newspapers_split(newspapers_read_times: List[int], num_coworkers: int) -> int:
     
     low, high = max(newspapers_read_times), sum(newspapers_read_times)
